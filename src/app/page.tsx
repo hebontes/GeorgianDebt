@@ -31,7 +31,7 @@ export default function Home() {
     fetchInitialDebt();
 
     // Set up an interval to refetch the debt every 30 seconds
-    const randomNumber = Math.floor(Math.random() * 30) + 1;
+    const randomNumber = Math.floor(Math.random() * 45) + 1;
 
     const intervalId = setInterval(() => setDebt(prev => prev + randomNumber), 100);
     return () => clearInterval(intervalId); // Clean up interval on unmount

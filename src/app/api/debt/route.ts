@@ -15,8 +15,8 @@ export async function GET() {
 // Update the debt every 30 seconds in the backend
 setInterval(() => {
     const debtPerSecond = 294
-    const deptPer30Second = debtPerSecond * 30
+    const deptPer30Second = debtPerSecond * 10
     debtStorage.debt += deptPer30Second;
-}, 30000); // 30 seconds
+}, 10000); // 30 seconds
 
 // 1 second = 294
