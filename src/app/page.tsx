@@ -46,20 +46,26 @@ export default function Home() {
   const formatter = new Intl.NumberFormat('ka-GE', { style: 'currency', currency: 'GEL' })
   const formattedAmount = formatter.format(debt);
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen pb-32 gap-16 sm:p-20">
-      <main className="flex flex-col gap-8 row-start-2 items-center justify-center ">
-        <h1 className="text-xl text-center md:text-4xl">
-          საქართველოს სახელმწიფო ვალი
-        </h1>
+    <div className="font-sans flex flex-col items-center justify-center h-screen pb-2 gap-16 sm:p-20">
+      <main className="mt-auto flex flex-col gap-8 row-start-2 items-center justify-center ">
+        <div>
+          <h1 className="text-3xl text-center md:text-4xl" style={{ fontWeight: 'bold' }}>
+            საქართველოს
+          </h1>
+          <h1 className="text-2xl mt-1 text-center md:text-4xl" style={{ fontWeight: 'bold' }}>
+            სახელმწიფო ვალი
+          </h1>
+        </div>
+
         <div className="flex items-center ">
-          <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold text-2xl md:text-3xl">
+          <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold text-xl md:text-3xl">
             {formattedAmount}
           </code>
         </div>
 
 
       </main>
-      <footer className="row-start-3 flex gap-6 flex-col flex-wrap items-center justify-center">
+      <footer className="mt-auto row-start-3 flex gap-6 flex-col flex-wrap items-center justify-center pb-8">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://mof.ge/en/4409"
