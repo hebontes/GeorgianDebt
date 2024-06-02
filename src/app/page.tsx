@@ -58,7 +58,7 @@ export default function Home() {
         </div>
 
         <div className="flex items-center ">
-          <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold text-xl md:text-3xl">
+          <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold text-2xl md:text-3xl">
             {formattedAmount}
           </code>
         </div>
