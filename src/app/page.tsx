@@ -46,7 +46,7 @@ export default function Home() {
   const formatter = new Intl.NumberFormat('ka-GE', { style: 'currency', currency: 'GEL' })
   const formattedAmount = formatter.format(debt);
   return (
-    <div className="font-sans flex flex-col items-center justify-center h-screen pb-2 gap-16 sm:p-20">
+    <div className="font-sans flex flex-col items-center justify-center h-[100dvh] pb-2 gap-16 sm:p-20">
       <main className="mt-auto flex flex-col gap-8 row-start-2 items-center justify-center ">
         <div>
           <h1 className="text-3xl text-center md:text-4xl" style={{ fontWeight: 'bold' }}>
