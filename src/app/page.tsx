@@ -41,34 +41,48 @@ export default function Home() {
     currency: "GEL",
   });
   const formattedAmount = formatter.format(debt);
+  const formattedSingleDebt = formatter.format(debt / 3000000);
   return (
     <div className="font-sans flex flex-col items-center justify-center h-[100dvh] pb-2 gap-16 sm:p-20">
-      <main className="mt-auto flex flex-col gap-8 row-start-2 items-center justify-center ">
-        <div className="px-8">
-          <h1
-            className="text-3xl text-center md:text-4xl "
-            style={{ fontWeight: "bold" }}
-          >
-            საქართველოს მთლიანი საგარეო ვალი
-          </h1>
-          {/* <h1
-            className="text-2xl mt-1 text-center md:text-4xl"
-            style={{ fontWeight: "bold" }}
-          >
-            სახელმწიფო ვალი
-          </h1> */}
+      <main className="mt-auto  row-start-2  ">
+        <div className="flex flex-col gap-8 items-center justify-center">
+          <div className="px-8">
+            <h1
+              className="text-3xl text-center md:text-4xl "
+              style={{ fontWeight: "bold" }}
+            >
+              საქართველოს მთლიანი საგარეო ვალი
+            </h1>
+          </div>
+
+          <div className="flex items-center ">
+            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold text-3xl md:text-3xl">
+              {formattedAmount}
+            </code>
+          </div>
         </div>
 
-        <div className="flex items-center ">
-          <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold text-3xl md:text-3xl">
-            {formattedAmount}
-          </code>
+        <div className="mt-16 flex flex-col gap-8 items-center justify-center">
+          <div className="px-8">
+            <h1
+              className="text-3xl text-center md:text-4xl "
+              style={{ fontWeight: "bold" }}
+            >
+              ვალი ერთ მოქალაქაზე
+            </h1>
+          </div>
+
+          <div className="flex items-center ">
+            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold text-3xl md:text-3xl">
+              {formattedSingleDebt}
+            </code>
+          </div>
         </div>
       </main>
       <footer className="mt-auto row-start-3 flex gap-6 flex-col flex-wrap items-center justify-center pb-8">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://mof.ge/en/4409"
+          href="https://nbg.gov.ge/media/news/%E1%83%A1%E1%83%90%E1%83%A5%E1%83%90%E1%83%A0%E1%83%97%E1%83%95%E1%83%94%E1%83%9A%E1%83%9D%E1%83%A1-%E1%83%9B%E1%83%97%E1%83%9A%E1%83%98%E1%83%90%E1%83%9C%E1%83%98-%E1%83%A1%E1%83%90%E1%83%92%E1%83%90%E1%83%A0%E1%83%94%E1%83%9D-%E1%83%95-60"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -79,7 +93,7 @@ export default function Home() {
             width={16}
             height={16}
           />
-          Ministry of Finance of Georgia
+          Gross External Debt of Georgia
         </a>
         <a
           className="opacity-30 flex items-center gap-2 hover:underline hover:underline-offset-4"
