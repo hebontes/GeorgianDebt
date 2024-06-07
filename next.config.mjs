@@ -2,6 +2,8 @@
 const nextConfig = {
     experimental: {
         taint: true,
+        allowMiddlewareResponseBody: true,
+
     },
 };
 
