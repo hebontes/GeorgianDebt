@@ -1,21 +1,18 @@
+import { get, getAll } from "@vercel/edge-config";
 import { NextRequest, NextResponse } from "next/server";
 
-export interface DebtData {
+export interface StorageResponse {
   debt: number;
-  get_diff_in_seconds: number;
+  specific_date: number;
 }
-const DEPLOY_DATE = new Date(2024, 6, 8, 1, 30);
-let debtStorage: DebtData = {
-  debt: 32651648447,
-  get_diff_in_seconds: Math.floor(
-    (new Date().getTime() - DEPLOY_DATE.getTime()) / 1000
-  ),
-}; // Initialize debt
+
+// 32651547563
+// 1717795800000
+const specificDate = new Date(2024, 5, 8, 1, 30).getTime();
 
 export async function GET() {
-  const response = NextResponse.json({
-    dept: debtStorage.debt + debtStorage.get_diff_in_seconds * 294,
-  });
-  response.headers.set("Cache-Control", "no-store"); // Disable caching for GET
-  return response;
+  const dept_and_date = await getAll();
+  console.log("🚀 ~ GET ~ specific_date:", dept_and_date);
+
+  return NextResponse.json(dept_and_date);
 }
