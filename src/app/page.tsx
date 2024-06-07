@@ -28,9 +28,10 @@ export default function Home() {
   }, []);
   useEffect(() => {
     // Set up an interval to refetch the debt every 30 seconds
-    const randomNumber = Math.random() * 100 + 1;
 
     const interval = setInterval(() => {
+      const randomNumber = Math.random() * 100 + 1;
+
       setDebt((prevDebt) => prevDebt + randomNumber);
     }, 100);
     return () => clearInterval(interval);
