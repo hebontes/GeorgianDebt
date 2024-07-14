@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
-  const [debt, setDebt] = useState<number>(32651648447);
+  const [debt, setDebt] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function Home() {
           </div>
 
           <div className="flex items-center">
-            {loading ?
+            {loading || !debt ?
               <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold text-3xl md:text-3xl">
                 {formatter.format(+Array.from({ length: 11 }, (v, i) => getRandomDigit()).join(""))}
               </code>
@@ -80,7 +80,7 @@ export default function Home() {
           </div>
 
           <div className="flex items-center ">
-            {loading ?
+            {loading || !debt ?
               <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold text-3xl md:text-3xl">
                 {formatter.format(+Array.from({ length: 5 }, (v, i) => getRandomDigit()).join(""))}
               </code>
