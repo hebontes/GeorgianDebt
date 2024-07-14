@@ -5,22 +5,22 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const [debt, setDebt] = useState<number>(32651648447);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchInitialDebt() {
+      setLoading(true)
       try {
         const response = await fetch("/api/debt"); // Fetch initial debt value
         if (!response.ok) {
-          alert("error");
-
           throw new Error(`Error fetching data: ${response.status}`);
         }
         const data = (await response.json()) as StorageResponse;
 
         const diff = (Date.now() - data.specific_date) / 1000;
+        setLoading(false)
         setDebt(data.debt + diff * 296);
       } catch (error) {
-        alert("error");
         console.error("Error fetching initial debt:", error);
       }
     }
@@ -43,6 +43,7 @@ export default function Home() {
   });
   const formattedAmount = formatter.format(debt);
   const formattedSingleDebt = formatter.format(debt / 3000000);
+  const getRandomDigit = () => Math.floor(Math.random() * 9 + 1)
   return (
     <div className="font-sans flex flex-col items-center justify-center h-[100dvh] pb-2 gap-16 sm:p-20">
       <main className="mt-auto  row-start-2  ">
@@ -56,10 +57,15 @@ export default function Home() {
             </h1>
           </div>
 
-          <div className="flex items-center ">
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold text-3xl md:text-3xl">
-              {formattedAmount}
-            </code>
+          <div className="flex items-center">
+            {loading ?
+              <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold text-3xl md:text-3xl">
+                {formatter.format(+Array.from({ length: 11 }, (v, i) => getRandomDigit()).join(""))}
+              </code>
+              :
+              <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold text-3xl md:text-3xl">
+                {formattedAmount}
+              </code>}
           </div>
         </div>
 
@@ -74,9 +80,13 @@ export default function Home() {
           </div>
 
           <div className="flex items-center ">
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold text-3xl md:text-3xl">
-              {formattedSingleDebt}
-            </code>
+            {loading ?
+              <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold text-3xl md:text-3xl">
+                {formatter.format(+Array.from({ length: 5 }, (v, i) => getRandomDigit()).join(""))}
+              </code>
+              : <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold text-3xl md:text-3xl">
+                {formattedSingleDebt}
+              </code>}
           </div>
         </div>
       </main>

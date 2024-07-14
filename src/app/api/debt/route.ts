@@ -12,7 +12,6 @@ const specificDate = new Date(2024, 5, 8, 1, 30).getTime();
 
 export async function GET() {
   const dept_and_date = await getAll();
-  console.log("🚀 ~ GET ~ specific_date:", dept_and_date);
 
   return NextResponse.json(dept_and_date);
 }
